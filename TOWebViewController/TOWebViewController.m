@@ -502,7 +502,23 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         [self.navigationController setToolbarHidden:self.hideToolbarOnClose animated:animated];
         [self.navigationController setNavigationBarHidden:self.hideNavBarOnClose animated:animated];
     }
+    
+    UINavigationController *nav = self.navigationController;
+    [[self transitionCoordinator] notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        if ([context isCancelled]) {
+            [self performSelector:@selector(ensureToolbarVisible) withObject:nil afterDelay:0.2];
+        }
+    }];
 }
+
+- (void)ensureToolbarVisible
+{
+    if (self.navigationController.toolbarHidden) {
+        [self.navigationController setToolbarHidden:NO animated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+}
+
 
 - (void)viewDidDisappear:(BOOL)animated
 {
