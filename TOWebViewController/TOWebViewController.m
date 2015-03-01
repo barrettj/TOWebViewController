@@ -381,7 +381,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     UIView *iconsContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.buttonWidth)];
     iconsContainerView.backgroundColor = [UIColor clearColor];
     
-    if (!self.hideForwardAndBack) {}
+    if (!self.hideForwardAndBack) {
         //add the back button
         self.backButton.frame = buttonFrame;
         [iconsContainerView addSubview:self.backButton];
