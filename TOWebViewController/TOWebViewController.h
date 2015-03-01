@@ -151,11 +151,11 @@
 
 @property (nonatomic, assign) BOOL hideForwardAndBack;
 
-/* Navigation Buttons */
-@property (nonatomic,strong) UIButton *backButton;                       /* Moves the web view one page back */
-@property (nonatomic,strong) UIButton *forwardButton;                    /* Moves the web view one page forward */
-@property (nonatomic,strong) UIButton *reloadStopButton;                 /* Reload / Stop buttons */
-@property (nonatomic,strong) UIButton *actionButton;                     /* Shows the UIActivityViewController */
-
+/* Event callbacks for button taps */
+- (void)backButtonTapped:(id)sender;
+- (void)forwardButtonTapped:(id)sender;
+- (void)reloadStopButtonTapped:(id)sender;
+- (void)actionButtonTapped:(id)sender;
+- (void)doneButtonTapped:(id)sender;
 
 @end
