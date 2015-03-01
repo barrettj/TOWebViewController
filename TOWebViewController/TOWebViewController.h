@@ -149,4 +149,12 @@
  */
 @property (nonatomic,assign)    CGFloat buttonBevelOpacity;
 
+
+/* Navigation Buttons */
+@property (nonatomic,strong) UIButton *backButton;                       /* Moves the web view one page back */
+@property (nonatomic,strong) UIButton *forwardButton;                    /* Moves the web view one page forward */
+@property (nonatomic,strong) UIButton *reloadStopButton;                 /* Reload / Stop buttons */
+@property (nonatomic,strong) UIButton *actionButton;                     /* Shows the UIActivityViewController */
+
+
 @end

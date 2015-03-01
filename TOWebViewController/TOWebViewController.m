@@ -127,11 +127,6 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 @property (nonatomic,strong) CAGradientLayer *gradientLayer;             /* Gradient effect for the background view behind the web view. */
 
-/* Navigation Buttons */
-@property (nonatomic,strong) UIButton *backButton;                       /* Moves the web view one page back */
-@property (nonatomic,strong) UIButton *forwardButton;                    /* Moves the web view one page forward */
-@property (nonatomic,strong) UIButton *reloadStopButton;                 /* Reload / Stop buttons */
-@property (nonatomic,strong) UIButton *actionButton;                     /* Shows the UIActivityViewController */
 @property (nonatomic,strong) UIView   *buttonsContainerView;              /* The container view that holds all of the navigation buttons. */
 
 /* Button placement metrics */
@@ -258,6 +253,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //Set the initial default style as full screen (But this can be easily overridden)
     self.modalPresentationStyle = UIModalPresentationFullScreen;
+
+    [self setUpNavigationButtons];
 }
 
 - (void)loadView
@@ -318,10 +315,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         loadingBarGradientLayer.frame = self.loadingBarView.bounds;
         [self.loadingBarView.layer addSublayer:loadingBarGradientLayer];
     }
-
-    //only load the buttons if we need to
-    if (self.navigationButtonsHidden == NO)
-        [self setUpNavigationButtons];
+        
 }
 
 - (void)setUpNavigationButtons
