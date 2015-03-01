@@ -381,15 +381,17 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     UIView *iconsContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.buttonWidth)];
     iconsContainerView.backgroundColor = [UIColor clearColor];
     
-    //add the back button
-    self.backButton.frame = buttonFrame;
-    [iconsContainerView addSubview:self.backButton];
-    
-    //add the forward button too, but keep it hidden for now
-    buttonFrame.origin.x = self.buttonWidth + self.buttonSpacing;
-    self.forwardButton.frame = buttonFrame;
-    [iconsContainerView addSubview:self.forwardButton];
-    buttonFrame.origin.x += (self.buttonWidth + self.buttonSpacing);
+    if (!self.hideForwardAndBack) {}
+        //add the back button
+        self.backButton.frame = buttonFrame;
+        [iconsContainerView addSubview:self.backButton];
+        
+        //add the forward button too, but keep it hidden for now
+        buttonFrame.origin.x = self.buttonWidth + self.buttonSpacing;
+        self.forwardButton.frame = buttonFrame;
+        [iconsContainerView addSubview:self.forwardButton];
+        buttonFrame.origin.x += (self.buttonWidth + self.buttonSpacing);
+    }
     
     //add the reload button if the action button is hidden
     self.reloadStopButton.frame = buttonFrame;
@@ -669,13 +671,6 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
             self.navigationController.toolbarItems = nil;
             self.navigationController.toolbarHidden = YES;
         }
-            
-        self.backButton = nil;
-        self.forwardButton = nil;
-        self.reloadIcon = nil;
-        self.stopIcon = nil;
-        self.reloadStopButton = nil;
-        self.actionButton = nil;
     }
 }
 

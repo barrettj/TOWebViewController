@@ -149,6 +149,7 @@
  */
 @property (nonatomic,assign)    CGFloat buttonBevelOpacity;
 
+@property (nonatomic, assign) BOOL hideForwardAndBack;
 
 /* Navigation Buttons */
 @property (nonatomic,strong) UIButton *backButton;                       /* Moves the web view one page back */
