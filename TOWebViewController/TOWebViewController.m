@@ -507,7 +507,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (void)ensureToolbarVisible
 {
-    if (self.navigationController.toolbarHidden) {
+    if (self.navigationController.toolbarHidden && !self.navigationButtonsHidden) {
         [self.navigationController setToolbarHidden:NO animated:YES];
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
