@@ -758,6 +758,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    
     //increment the number of load requests started
     _loadingProgressState.loadingCount++;
     
@@ -769,6 +770,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //update the navigation bar buttons
     [self refreshButtonsState];
+    
+    if (self.didStartLoading) {
+        self.didStartLoading(self);
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -779,6 +784,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     //see if we can set the proper page title at this point
     if (self.showPageTitles)
         self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
+    if (self.didFinishLoading) {
+        self.didFinishLoading(self);
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -786,6 +795,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     self.loadingBarView.alpha = 0.0f;
     [self handleLoadRequestCompletion];
     [self refreshButtonsState];
+    
+    if (self.didFinishLoading) {
+        self.didFinishLoading(self);
+    }
 }
 
 #pragma mark -

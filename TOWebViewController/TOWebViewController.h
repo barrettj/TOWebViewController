@@ -26,6 +26,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TOWebViewController;
+
+typedef void (^TOWebControllerNotificationBlock)(TOWebViewController *webviewController);
+
+
 @interface TOWebViewController : UIViewController <UIWebViewDelegate>
 
 /**
@@ -150,6 +155,10 @@
 @property (nonatomic,assign)    CGFloat buttonBevelOpacity;
 
 @property (nonatomic, assign) BOOL hideForwardAndBack;
+
+@property (nonatomic, copy) TOWebControllerNotificationBlock didStartLoading;
+@property (nonatomic, copy) TOWebControllerNotificationBlock didFinishLoading;
+
 
 /* Event callbacks for button taps */
 - (void)backButtonTapped:(id)sender;
